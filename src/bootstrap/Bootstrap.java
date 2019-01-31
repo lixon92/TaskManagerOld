@@ -1,25 +1,47 @@
 package bootstrap;
 
 import command.AbstractCommand;
-import command.Project.CreateProjectCommand;
+import command.Helper.Helper;
+import command.Project.ProjectCreateCommand;
+import command.Project.ProjectDeleteCommand;
+import command.Project.ProjectPrintCommand;
+import command.Task.TaskCreateCommand;
+import command.Task.TaskPrintCommand;
+import repository.ProjectRepository;
+import repository.TaskRepository;
+import service.ProjectService;
+import service.TaskService;
+import api.IServiceLocate;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Bootstrap {
+public class Bootstrap implements IServiceLocate {
+
+    private TaskRepository taskRepository = new TaskRepository();
+    private ProjectRepository projectRepository = new ProjectRepository();
+
+    private TaskService taskService = new TaskService(taskRepository);
+    private ProjectService projectService = new ProjectService(projectRepository, taskRepository);
 
     private Scanner scanner = new Scanner(System.in);
-    private Map <String, AbstractCommand> commands = new HashMap<>();
+    private final Map <String, AbstractCommand> commands = new HashMap<>();
     private String inputText;
     private AbstractCommand tempObj;
     public void init(){
-        registry(new CreateProjectCommand());
+        registry(new ProjectCreateCommand(this));
+        registry(new ProjectPrintCommand(this));
+        registry(new ProjectDeleteCommand(this));
+        registry(new TaskCreateCommand(this));
+        registry(new TaskPrintCommand(this));
+        registry(new Helper(this));
+
         for(;;){
             inputText = scanner.nextLine();
             tempObj = commands.get(inputText);
             if (tempObj != null){
-                System.out.println("[" + tempObj.command() + "]");
+                System.out.println("[" + tempObj.description() + "]");
                 tempObj.execute();
                 System.out.println("[OK]");
             }
@@ -29,7 +51,13 @@ public class Bootstrap {
         }
     }
 
-    public void registry(AbstractCommand abstractCommand){
+    private void registry(AbstractCommand abstractCommand){
         commands.put(abstractCommand.command(), abstractCommand);
+    }
+    public ProjectService getProjectService(){
+        return projectService;
+    }
+    public TaskService getTaskService(){
+        return taskService;
     }
 }

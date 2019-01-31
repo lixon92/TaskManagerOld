@@ -7,7 +7,7 @@ public class Task {
 
     private UUID uuid = UUID.randomUUID();
     private String id = uuid.toString();
-
+    private String projectId;
     private String describe;
     private String name;
     private Date dateCreated = new Date();

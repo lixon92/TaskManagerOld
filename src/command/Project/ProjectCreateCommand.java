@@ -1,18 +1,22 @@
 package command.Project;
 
+import api.IServiceLocate;
 import command.AbstractCommand;
 import repository.ProjectRepository;
 
 import java.util.Scanner;
 
-public class CreateProjectCommand extends AbstractCommand {
+public class ProjectCreateCommand extends AbstractCommand {
+
+    public ProjectCreateCommand(IServiceLocate serviceLocate){
+        super(serviceLocate);
+    };
 
     private Scanner scanner = new Scanner(System.in);
-    private ProjectRepository projectRepository = new ProjectRepository();
     private String nameProject, descriptionProject;
 
     public String command(){
-        return "project-create";
+        return "c";
     }
 
     public void execute(){
@@ -20,10 +24,10 @@ public class CreateProjectCommand extends AbstractCommand {
         nameProject = scanner.nextLine();
         System.out.print("enter description project: ");
         descriptionProject = scanner.nextLine();
-        projectRepository.createProject(nameProject, descriptionProject);
+        serviceLocate.getProjectService().createProject(nameProject, descriptionProject);
     }
 
     public String description(){
-        return "project-create";
+        return "It create project";
     }
 }
