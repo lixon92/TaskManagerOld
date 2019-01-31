@@ -24,8 +24,7 @@ public class ProjectRepository {
         Project project = projectList.get(index);
         project.setName(name);
         project.setDescribe(description);
-        projectList.add(index, project);
-    }
+}
 
     public List<Project> getProjectList() {
         return projectList;

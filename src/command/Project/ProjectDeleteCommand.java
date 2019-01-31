@@ -17,7 +17,7 @@ public class ProjectDeleteCommand extends AbstractCommand {
 
     public String command() {
 
-        return "r";
+        return "pr d";
 
     }
 

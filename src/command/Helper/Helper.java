@@ -3,6 +3,7 @@ package command.Helper;
 import api.IServiceLocate;
 import command.AbstractCommand;
 import entity.Project;
+import entity.Task;
 
 import java.util.List;
 
@@ -31,6 +32,13 @@ public class Helper extends AbstractCommand {
             System.out.println( i + 1 + ". " + projects.get(i).getName() + " " + projects.get(i).getId());
         }
 
+        List<Task> taskList = serviceLocate.getTaskService().getTaskList();
+        
+        int index = 0;
+        for (Task task : taskList){
+            System.out.println(index + 1 + ". " + task.getName() + " " + task.getId());
+            index++;
+        }
     }
 
     @Override

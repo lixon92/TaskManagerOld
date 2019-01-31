@@ -16,7 +16,7 @@ public class ProjectPrintCommand extends AbstractCommand {
     private Scanner scanner = new Scanner(System.in);
 
     public String command(){
-        return "d";
+        return "pr p";
     }
 
     public void execute(){

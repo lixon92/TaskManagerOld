@@ -5,7 +5,9 @@ import command.Helper.Helper;
 import command.Project.ProjectCreateCommand;
 import command.Project.ProjectDeleteCommand;
 import command.Project.ProjectPrintCommand;
+import command.Project.ProjectUpdateCommand;
 import command.Task.TaskCreateCommand;
+import command.Task.TaskDeleteCommand;
 import command.Task.TaskPrintCommand;
 import repository.ProjectRepository;
 import repository.TaskRepository;
@@ -33,8 +35,12 @@ public class Bootstrap implements IServiceLocate {
         registry(new ProjectCreateCommand(this));
         registry(new ProjectPrintCommand(this));
         registry(new ProjectDeleteCommand(this));
+        registry(new ProjectUpdateCommand(this));
+
         registry(new TaskCreateCommand(this));
         registry(new TaskPrintCommand(this));
+        registry(new TaskDeleteCommand(this));
+
         registry(new Helper(this));
 
         for(;;){

@@ -16,7 +16,7 @@ public class ProjectCreateCommand extends AbstractCommand {
     private String nameProject, descriptionProject;
 
     public String command(){
-        return "c";
+        return "pr c";
     }
 
     public void execute(){

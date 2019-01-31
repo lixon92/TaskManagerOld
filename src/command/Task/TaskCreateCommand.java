@@ -14,15 +14,15 @@ public class TaskCreateCommand extends AbstractCommand {
     private final Scanner scanner = new Scanner(System.in);
     private String nameTask, descriptionTask, nameProject;
         public String command() {
-        return "tc";
+        return "t c";
     }
 
     public void execute() {
-        System.out.println("enter name of project");
+        System.out.println("enter number of project");
         nameProject = scanner.nextLine();
-        System.out.println("enter name task");
+        System.out.println("enter name of task");
         nameTask = scanner.nextLine();
-        System.out.println("enter description task");
+        System.out.println("enter description of task");
         descriptionTask = scanner.nextLine();
         serviceLocate.getTaskService().createTask(nameTask, descriptionTask);
     }

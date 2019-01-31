@@ -14,7 +14,7 @@ public class TaskDeleteCommand extends AbstractCommand {
     private Scanner scanner = new Scanner(System.in);
     @Override
     public String command() {
-        return "tr";
+        return "t d";
     }
 
     @Override

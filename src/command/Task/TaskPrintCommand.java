@@ -12,7 +12,7 @@ public class TaskPrintCommand  extends AbstractCommand {
     }
 
     public String command() {
-        return "td";
+        return "t p";
     }
 
     public void execute() {
