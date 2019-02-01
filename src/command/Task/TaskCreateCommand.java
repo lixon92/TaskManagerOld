@@ -12,22 +12,27 @@ public class TaskCreateCommand extends AbstractCommand {
     }
 
     private final Scanner scanner = new Scanner(System.in);
-    private String nameTask, descriptionTask, nameProject;
+    private String nameTask, descriptionTask, projectId;
+    int numberTask;
+
         public String command() {
         return "t c";
     }
 
     public void execute() {
+
         System.out.println("enter number of project");
-        nameProject = scanner.nextLine();
+        numberTask = Integer.parseInt(scanner.nextLine()) - 1;
+        projectId = serviceLocate.getProjectService().getProjectList().get(numberTask).getId();
+
         System.out.println("enter name of task");
         nameTask = scanner.nextLine();
         System.out.println("enter description of task");
         descriptionTask = scanner.nextLine();
-        serviceLocate.getTaskService().createTask(nameTask, descriptionTask);
+        serviceLocate.getTaskService().createTask(projectId, nameTask, descriptionTask);
     }
 
     public String description() {
-        return "Create new task";
+        return "Create task";
     }
 }

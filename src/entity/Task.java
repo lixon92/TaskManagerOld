@@ -12,6 +12,14 @@ public class Task {
     private String name;
     private Date dateCreated = new Date();
 
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
+    }
+
+    public String getProjectId() {
+        return projectId;
+    }
+
     public void setName(String name){
         this.name = name;
     }

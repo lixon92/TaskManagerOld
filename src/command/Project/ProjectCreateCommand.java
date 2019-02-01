@@ -20,14 +20,14 @@ public class ProjectCreateCommand extends AbstractCommand {
     }
 
     public void execute(){
-        System.out.print("enter name project: ");
+        System.out.println("enter name project: ");
         nameProject = scanner.nextLine();
-        System.out.print("enter description project: ");
+        System.out.println("enter description project: ");
         descriptionProject = scanner.nextLine();
         serviceLocate.getProjectService().createProject(nameProject, descriptionProject);
     }
 
     public String description(){
-        return "It create project";
+        return "Create project";
     }
 }

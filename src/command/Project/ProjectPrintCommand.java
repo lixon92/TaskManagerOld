@@ -27,11 +27,12 @@ public class ProjectPrintCommand extends AbstractCommand {
             System.out.println("Empty");
         }
         for ( int i = 0; i < projects.size(); i++ ){
-            System.out.println( i + 1 + ". " + projects.get(i).getName() + " " + projects.get(i).getId());
+            //System.out.println( i + 1 + ". " + projects.get(i).getName() + " " + projects.get(i).getId());
+            System.out.printf("%s. %s %.8s%n", i + 1, projects.get(i).getName(), projects.get(i).getId());
         }
     }
 
     public String description(){
-        return "project-create";
+        return "Print projects";
     }
 }

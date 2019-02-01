@@ -1,6 +1,7 @@
 package bootstrap;
 
 import command.AbstractCommand;
+import command.Helper.HelpCommand;
 import command.Helper.Helper;
 import command.Project.ProjectCreateCommand;
 import command.Project.ProjectDeleteCommand;
@@ -9,15 +10,14 @@ import command.Project.ProjectUpdateCommand;
 import command.Task.TaskCreateCommand;
 import command.Task.TaskDeleteCommand;
 import command.Task.TaskPrintCommand;
+import command.Task.TaskUpdateCommand;
 import repository.ProjectRepository;
 import repository.TaskRepository;
 import service.ProjectService;
 import service.TaskService;
 import api.IServiceLocate;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Bootstrap implements IServiceLocate {
 
@@ -28,9 +28,11 @@ public class Bootstrap implements IServiceLocate {
     private ProjectService projectService = new ProjectService(projectRepository, taskRepository);
 
     private Scanner scanner = new Scanner(System.in);
+
     private final Map <String, AbstractCommand> commands = new HashMap<>();
     private String inputText;
     private AbstractCommand tempObj;
+
     public void init(){
         registry(new ProjectCreateCommand(this));
         registry(new ProjectPrintCommand(this));
@@ -40,6 +42,9 @@ public class Bootstrap implements IServiceLocate {
         registry(new TaskCreateCommand(this));
         registry(new TaskPrintCommand(this));
         registry(new TaskDeleteCommand(this));
+        registry(new TaskUpdateCommand(this));
+
+        registry(new HelpCommand(this));
 
         registry(new Helper(this));
 
@@ -57,8 +62,14 @@ public class Bootstrap implements IServiceLocate {
         }
     }
 
+    // складывает в Мапу команды и объекты команд
     private void registry(AbstractCommand abstractCommand){
         commands.put(abstractCommand.command(), abstractCommand);
+    }
+
+    public Map <String, AbstractCommand> getCommandList(){
+
+            return commands;
     }
     public ProjectService getProjectService(){
         return projectService;

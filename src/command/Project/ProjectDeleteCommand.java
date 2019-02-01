@@ -33,7 +33,7 @@ public class ProjectDeleteCommand extends AbstractCommand {
 
     public String description() {
 
-        return "project-delete";
+        return "Delete project";
 
     }
 

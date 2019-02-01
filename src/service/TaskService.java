@@ -13,12 +13,16 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    public void createTask(String name, String description) {
-        taskRepository.createTask(name, description);
+    public void createTask(String projectId, String name, String description) {
+        taskRepository.createTask(projectId, name, description);
     }
 
     public void deleteTask(int index) {
         taskRepository.deleteTask(index);
+    }
+
+    public void updateTask(int index, String name, String description){
+        taskRepository.updateTask(index, name, description);
     }
 
     public List<Task> getTaskList() {
