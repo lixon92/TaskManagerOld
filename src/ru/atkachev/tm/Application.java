@@ -1,6 +1,6 @@
-package ru.atkachev.TaskManager;
+package ru.atkachev.tm;
 
-import ru.atkachev.TaskManager.bootstrap.Bootstrap;
+import ru.atkachev.tm.bootstrap.Bootstrap;
 
 public class Application {
     public static void main(String[] args) {

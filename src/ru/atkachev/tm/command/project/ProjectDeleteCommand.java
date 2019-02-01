@@ -1,9 +1,7 @@
-package ru.atkachev.TaskManager.command.project;
+package ru.atkachev.tm.command.project;
 
-import ru.atkachev.TaskManager.api.IServiceLocate;
-import ru.atkachev.TaskManager.command.AbstractCommand;
-
-import java.util.Scanner;
+import ru.atkachev.tm.api.IServiceLocate;
+import ru.atkachev.tm.command.AbstractCommand;
 
 public class ProjectDeleteCommand extends AbstractCommand {
 
@@ -13,8 +11,6 @@ public class ProjectDeleteCommand extends AbstractCommand {
 
     }
 
-    final private Scanner scanner = new Scanner(System.in);
-
     public String command() {
         return "pr d";
     }
@@ -22,7 +18,7 @@ public class ProjectDeleteCommand extends AbstractCommand {
     public void execute() {
         int index;
         System.out.print("enter number of project: ");
-        index = Integer.parseInt(scanner.nextLine()) - 1;
+        index = Integer.parseInt(serviceLocate.getTerminalService()) - 1;
         serviceLocate.getProjectService().deleteProject(index);
     }
 

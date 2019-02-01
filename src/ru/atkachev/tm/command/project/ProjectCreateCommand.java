@@ -1,9 +1,7 @@
-package ru.atkachev.TaskManager.command.project;
+package ru.atkachev.tm.command.project;
 
-import ru.atkachev.TaskManager.api.IServiceLocate;
-import ru.atkachev.TaskManager.command.AbstractCommand;
-
-import java.util.Scanner;
+import ru.atkachev.tm.api.IServiceLocate;
+import ru.atkachev.tm.command.AbstractCommand;
 
 public class ProjectCreateCommand extends AbstractCommand {
 
@@ -11,18 +9,16 @@ public class ProjectCreateCommand extends AbstractCommand {
         super(serviceLocate);
     };
 
-    final private Scanner scanner = new Scanner(System.in);
-    private String nameProject, descriptionProject;
-
     public String command(){
         return "pr c";
     }
 
     public void execute(){
+        String nameProject, descriptionProject;
         System.out.println("enter name project: ");
-        nameProject = scanner.nextLine();
+        nameProject = serviceLocate.getTerminalService();
         System.out.println("enter description project: ");
-        descriptionProject = scanner.nextLine();
+        descriptionProject = serviceLocate.getTerminalService();
         serviceLocate.getProjectService().createProject(nameProject, descriptionProject);
     }
 

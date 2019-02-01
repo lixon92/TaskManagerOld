@@ -1,18 +1,13 @@
-package ru.atkachev.TaskManager.command.task;
+package ru.atkachev.tm.command.task;
 
-import ru.atkachev.TaskManager.api.IServiceLocate;
-import ru.atkachev.TaskManager.command.AbstractCommand;
-
-import java.util.Scanner;
+import ru.atkachev.tm.api.IServiceLocate;
+import ru.atkachev.tm.command.AbstractCommand;
 
 public class TaskDeleteCommand extends AbstractCommand {
 
     public TaskDeleteCommand(IServiceLocate serviceLocate) {
         super(serviceLocate);
     }
-
-    final private Scanner scanner = new Scanner(System.in);
-    private int index;
 
     @Override
     public String command() {
@@ -21,8 +16,9 @@ public class TaskDeleteCommand extends AbstractCommand {
 
     @Override
     public void execute() {
+        int index;
         System.out.print("enter number of task: ");
-        index = Integer.parseInt(scanner.nextLine()) - 1;
+        index = Integer.parseInt(serviceLocate.getTerminalService()) - 1;
         serviceLocate.getTaskService().deleteTask(index);
     }
 

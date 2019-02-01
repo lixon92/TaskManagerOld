@@ -1,9 +1,9 @@
-package ru.atkachev.TaskManager.command.helper;
+package ru.atkachev.tm.command.helper;
 
-import ru.atkachev.TaskManager.api.IServiceLocate;
-import ru.atkachev.TaskManager.command.AbstractCommand;
-import ru.atkachev.TaskManager.entity.Project;
-import ru.atkachev.TaskManager.entity.Task;
+import ru.atkachev.tm.api.IServiceLocate;
+import ru.atkachev.tm.command.AbstractCommand;
+import ru.atkachev.tm.entity.Project;
+import ru.atkachev.tm.entity.Task;
 
 import java.util.List;
 

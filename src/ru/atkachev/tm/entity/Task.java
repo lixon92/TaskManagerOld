@@ -1,15 +1,23 @@
-package ru.atkachev.TaskManager.entity;
+package ru.atkachev.tm.entity;
 
 import java.util.Date;
 import java.util.UUID;
 
-public class Project {
+public class Task {
 
     final private Date dateCreated = new Date();
     final private String id = UUID.randomUUID().toString();
-
+    private String projectId;
     private String describe;
     private String name;
+
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
+    }
+
+    public String getProjectId() {
+        return projectId;
+    }
 
     public void setName(String name){
         this.name = name;
@@ -32,5 +40,4 @@ public class Project {
     public Date getDateCreated (){
         return dateCreated;
     }
-
 }

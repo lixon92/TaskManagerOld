@@ -1,21 +1,21 @@
-package ru.atkachev.TaskManager.bootstrap;
+package ru.atkachev.tm.bootstrap;
 
-import ru.atkachev.TaskManager.command.AbstractCommand;
-import ru.atkachev.TaskManager.command.helper.HelpCommand;
-import ru.atkachev.TaskManager.command.helper.Helper;
-import ru.atkachev.TaskManager.command.project.ProjectCreateCommand;
-import ru.atkachev.TaskManager.command.project.ProjectDeleteCommand;
-import ru.atkachev.TaskManager.command.project.ProjectPrintCommand;
-import ru.atkachev.TaskManager.command.project.ProjectUpdateCommand;
-import ru.atkachev.TaskManager.command.task.TaskCreateCommand;
-import ru.atkachev.TaskManager.command.task.TaskDeleteCommand;
-import ru.atkachev.TaskManager.command.task.TaskPrintCommand;
-import ru.atkachev.TaskManager.command.task.TaskUpdateCommand;
-import ru.atkachev.TaskManager.repository.ProjectRepository;
-import ru.atkachev.TaskManager.repository.TaskRepository;
-import ru.atkachev.TaskManager.service.ProjectService;
-import ru.atkachev.TaskManager.service.TaskService;
-import ru.atkachev.TaskManager.api.IServiceLocate;
+import ru.atkachev.tm.command.AbstractCommand;
+import ru.atkachev.tm.command.helper.HelpCommand;
+import ru.atkachev.tm.command.helper.Helper;
+import ru.atkachev.tm.command.project.ProjectCreateCommand;
+import ru.atkachev.tm.command.project.ProjectDeleteCommand;
+import ru.atkachev.tm.command.project.ProjectPrintCommand;
+import ru.atkachev.tm.command.project.ProjectUpdateCommand;
+import ru.atkachev.tm.command.task.TaskCreateCommand;
+import ru.atkachev.tm.command.task.TaskDeleteCommand;
+import ru.atkachev.tm.command.task.TaskPrintCommand;
+import ru.atkachev.tm.command.task.TaskUpdateCommand;
+import ru.atkachev.tm.repository.ProjectRepository;
+import ru.atkachev.tm.repository.TaskRepository;
+import ru.atkachev.tm.service.ProjectService;
+import ru.atkachev.tm.service.TaskService;
+import ru.atkachev.tm.api.IServiceLocate;
 
 import java.util.*;
 
@@ -76,5 +76,8 @@ public class Bootstrap implements IServiceLocate {
     }
     public TaskService getTaskService(){
         return taskService;
+    }
+    public String getTerminalService(){
+        return scanner.nextLine();
     }
 }

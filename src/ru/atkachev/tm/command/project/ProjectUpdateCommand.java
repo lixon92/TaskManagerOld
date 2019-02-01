@@ -1,14 +1,10 @@
-package ru.atkachev.TaskManager.command.project;
+package ru.atkachev.tm.command.project;
 
-import ru.atkachev.TaskManager.api.IServiceLocate;
-import ru.atkachev.TaskManager.command.AbstractCommand;
-
-import java.util.Scanner;
+import ru.atkachev.tm.api.IServiceLocate;
+import ru.atkachev.tm.command.AbstractCommand;
 
 public class ProjectUpdateCommand extends AbstractCommand {
-    final private Scanner scanner = new Scanner(System.in);
-    private int index;
-    private String nameProject, descriptionProject;
+
 
     public ProjectUpdateCommand(IServiceLocate serviceLocate) {
         super(serviceLocate);
@@ -21,14 +17,16 @@ public class ProjectUpdateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
+        int index;
+        String nameProject, descriptionProject;
         System.out.println("enter number project");
-        index = Integer.parseInt(scanner.nextLine()) - 1;
+        index = Integer.parseInt(serviceLocate.getTerminalService()) - 1;
 
         System.out.println("enter new name project: ");
-        nameProject = scanner.nextLine();
+        nameProject = serviceLocate.getTerminalService();
 
         System.out.println("enter new description project: ");
-        descriptionProject = scanner.nextLine();
+        descriptionProject = serviceLocate.getTerminalService();
 
         serviceLocate.getProjectService().updateProject(index, nameProject, descriptionProject);
     }

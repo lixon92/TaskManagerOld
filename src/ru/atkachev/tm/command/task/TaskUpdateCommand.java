@@ -1,9 +1,7 @@
-package ru.atkachev.TaskManager.command.task;
+package ru.atkachev.tm.command.task;
 
-import ru.atkachev.TaskManager.api.IServiceLocate;
-import ru.atkachev.TaskManager.command.AbstractCommand;
-
-import java.util.Scanner;
+import ru.atkachev.tm.api.IServiceLocate;
+import ru.atkachev.tm.command.AbstractCommand;
 
 public class TaskUpdateCommand extends AbstractCommand {
 
@@ -11,9 +9,6 @@ public class TaskUpdateCommand extends AbstractCommand {
         super(serviceLocate);
     }
 
-    final private Scanner scanner = new Scanner(System.in);
-    private int index;
-    private String nameTask, descriptionTask;
     @Override
     public String command() {
         return "t u";
@@ -21,14 +16,17 @@ public class TaskUpdateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
+        int index;
+        String nameTask, descriptionTask;
+
         System.out.println("enter number task");
-        index = Integer.parseInt(scanner.nextLine()) - 1;
+        index = Integer.parseInt(serviceLocate.getTerminalService()) - 1;
 
         System.out.println("enter new name task: ");
-        nameTask = scanner.nextLine();
+        nameTask = serviceLocate.getTerminalService();
 
         System.out.println("enter new description task: ");
-        descriptionTask = scanner.nextLine();
+        descriptionTask = serviceLocate.getTerminalService();
 
         serviceLocate.getTaskService().updateTask(index, nameTask, descriptionTask);
     }
