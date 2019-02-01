@@ -7,10 +7,10 @@ import java.util.List;
 
 public class ProjectRepository {
 
-    private final List<Project> projectList = new ArrayList<Project>();
+    final private List<Project> projectList = new ArrayList<>();
+    private Project project = new Project();
 
     public void createProject(String name, String description){
-        Project project = new Project();
         project.setName(name);
         project.setDescribe(description);
         projectList.add(project);
@@ -20,11 +20,11 @@ public class ProjectRepository {
         projectList.remove(index);
     }
 
-    public void updateProject(int index, String name, String description ){
-        Project project = projectList.get(index);
+    public void updateProject( int index, String name, String description ){
+        project = projectList.get(index);
         project.setName(name);
         project.setDescribe(description);
-}
+    }
 
     public List<Project> getProjectList() {
         return projectList;

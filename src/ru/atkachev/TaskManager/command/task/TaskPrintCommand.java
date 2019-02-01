@@ -7,6 +7,8 @@ import ru.atkachev.TaskManager.entity.Task;
 import java.util.List;
 
 public class TaskPrintCommand  extends AbstractCommand {
+    final private List<Task> taskList = serviceLocate.getTaskService().getTaskList();
+    private int index = 0;
     public TaskPrintCommand(IServiceLocate serviceLocate) {
         super(serviceLocate);
     }
@@ -16,8 +18,6 @@ public class TaskPrintCommand  extends AbstractCommand {
     }
 
     public void execute() {
-        List<Task> taskList = serviceLocate.getTaskService().getTaskList();
-        int index = 0;
         for (Task task : taskList){
             System.out.printf("%s. %s %.8s %.8s%n", index + 1, task.getName(), task.getId(), task.getProjectId());
             index++;

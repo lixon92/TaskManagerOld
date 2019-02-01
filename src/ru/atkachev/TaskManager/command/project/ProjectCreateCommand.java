@@ -11,7 +11,7 @@ public class ProjectCreateCommand extends AbstractCommand {
         super(serviceLocate);
     };
 
-    private Scanner scanner = new Scanner(System.in);
+    final private Scanner scanner = new Scanner(System.in);
     private String nameProject, descriptionProject;
 
     public String command(){

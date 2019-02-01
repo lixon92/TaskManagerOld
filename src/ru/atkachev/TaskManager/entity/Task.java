@@ -5,12 +5,11 @@ import java.util.UUID;
 
 public class Task {
 
-    private UUID uuid = UUID.randomUUID();
-    private String id = uuid.toString();
+    final private Date dateCreated = new Date();
+    final private String id = UUID.randomUUID().toString();
     private String projectId;
     private String describe;
     private String name;
-    private Date dateCreated = new Date();
 
     public void setProjectId(String projectId) {
         this.projectId = projectId;

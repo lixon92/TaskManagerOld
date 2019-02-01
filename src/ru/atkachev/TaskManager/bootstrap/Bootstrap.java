@@ -69,7 +69,6 @@ public class Bootstrap implements IServiceLocate {
     }
 
     public Map <String, AbstractCommand> getCommandList(){
-
             return commands;
     }
     public ProjectService getProjectService(){

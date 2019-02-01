@@ -11,7 +11,9 @@ public class TaskDeleteCommand extends AbstractCommand {
         super(serviceLocate);
     }
 
-    private Scanner scanner = new Scanner(System.in);
+    final private Scanner scanner = new Scanner(System.in);
+    private int index;
+
     @Override
     public String command() {
         return "t d";
@@ -19,7 +21,6 @@ public class TaskDeleteCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        int index;
         System.out.print("enter number of task: ");
         index = Integer.parseInt(scanner.nextLine()) - 1;
         serviceLocate.getTaskService().deleteTask(index);

@@ -6,14 +6,14 @@ import ru.atkachev.TaskManager.command.AbstractCommand;
 import java.util.Scanner;
 
 public class TaskUpdateCommand extends AbstractCommand {
-    Scanner scanner = new Scanner(System.in);
 
-    int index;
-    String nameTask, descriptionTask;
     public TaskUpdateCommand(IServiceLocate serviceLocate) {
         super(serviceLocate);
     }
 
+    final private Scanner scanner = new Scanner(System.in);
+    private int index;
+    private String nameTask, descriptionTask;
     @Override
     public String command() {
         return "t u";

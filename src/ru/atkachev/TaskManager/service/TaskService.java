@@ -7,7 +7,7 @@ import java.util.List;
 
 public class TaskService {
 
-    private TaskRepository taskRepository;
+    final private TaskRepository taskRepository;
 
     public TaskService(TaskRepository taskRepository){
         this.taskRepository = taskRepository;

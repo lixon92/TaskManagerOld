@@ -13,28 +13,21 @@ public class ProjectDeleteCommand extends AbstractCommand {
 
     }
 
-    private final Scanner scanner = new Scanner(System.in);
+    final private Scanner scanner = new Scanner(System.in);
 
     public String command() {
-
         return "pr d";
-
     }
 
     public void execute() {
-
         int index;
         System.out.print("enter number of project: ");
         index = Integer.parseInt(scanner.nextLine()) - 1;
-
         serviceLocate.getProjectService().deleteProject(index);
-
     }
 
     public String description() {
-
         return "Delete project";
-
     }
 
 }

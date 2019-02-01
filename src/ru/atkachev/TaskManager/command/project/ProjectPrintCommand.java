@@ -13,21 +13,18 @@ public class ProjectPrintCommand extends AbstractCommand {
         super(serviceLocate);
     }
 
-    private Scanner scanner = new Scanner(System.in);
+    final private Scanner scanner = new Scanner(System.in);
+    final private List<Project> projects = serviceLocate.getProjectService().getProjectList();
 
     public String command(){
         return "pr p";
     }
 
     public void execute(){
-
-        List<Project> projects = serviceLocate.getProjectService().getProjectList();
-
         if (projects.isEmpty()){
             System.out.println("Empty");
         }
         for ( int i = 0; i < projects.size(); i++ ){
-            //System.out.println( i + 1 + ". " + projects.get(i).getName() + " " + projects.get(i).getId());
             System.out.printf("%s. %s %.8s%n", i + 1, projects.get(i).getName(), projects.get(i).getId());
         }
     }

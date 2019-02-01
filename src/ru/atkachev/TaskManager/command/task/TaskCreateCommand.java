@@ -11,9 +11,9 @@ public class TaskCreateCommand extends AbstractCommand {
         super(serviceLocate);
     }
 
-    private final Scanner scanner = new Scanner(System.in);
+    final private Scanner scanner = new Scanner(System.in);
     private String nameTask, descriptionTask, projectId;
-    int numberTask;
+    private int numberTask;
 
         public String command() {
         return "t c";

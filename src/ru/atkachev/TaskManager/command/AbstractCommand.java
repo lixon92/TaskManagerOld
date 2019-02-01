@@ -4,7 +4,7 @@ import ru.atkachev.TaskManager.api.IServiceLocate;
 
 public abstract class AbstractCommand {
 
-    protected IServiceLocate serviceLocate;
+    final protected IServiceLocate serviceLocate;
     public AbstractCommand(IServiceLocate serviceLocate){
         this.serviceLocate = serviceLocate;
     };

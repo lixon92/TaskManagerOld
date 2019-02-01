@@ -8,7 +8,9 @@ import java.util.List;
 import java.util.Map;
 
 public class HelpCommand extends AbstractCommand {
-    Map<String, AbstractCommand> commands = serviceLocate.getCommandList();
+    final private Map<String, AbstractCommand> commands = serviceLocate.getCommandList();
+    final private List<String> keys = new ArrayList<>(commands.keySet());
+
     public HelpCommand(IServiceLocate serviceLocate) {
         super(serviceLocate);
     }
@@ -20,7 +22,6 @@ public class HelpCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-       List<String> keys = new ArrayList<String>(commands.keySet());
 
        for(int i = 0; i < keys.size(); i++) {
            String key = keys.get(i);

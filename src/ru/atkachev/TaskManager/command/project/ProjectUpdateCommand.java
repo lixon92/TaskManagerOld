@@ -6,7 +6,7 @@ import ru.atkachev.TaskManager.command.AbstractCommand;
 import java.util.Scanner;
 
 public class ProjectUpdateCommand extends AbstractCommand {
-    private Scanner scanner = new Scanner(System.in);
+    final private Scanner scanner = new Scanner(System.in);
     private int index;
     private String nameProject, descriptionProject;
 
