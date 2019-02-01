@@ -1,7 +1,7 @@
-package service;
+package ru.atkachev.TaskManager.service;
 
-import entity.Task;
-import repository.TaskRepository;
+import ru.atkachev.TaskManager.entity.Task;
+import ru.atkachev.TaskManager.repository.TaskRepository;
 
 import java.util.List;
 

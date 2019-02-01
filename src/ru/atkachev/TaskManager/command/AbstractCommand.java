@@ -1,6 +1,6 @@
-package command;
+package ru.atkachev.TaskManager.command;
 
-import api.IServiceLocate;
+import ru.atkachev.TaskManager.api.IServiceLocate;
 
 public abstract class AbstractCommand {
 

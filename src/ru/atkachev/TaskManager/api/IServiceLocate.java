@@ -1,8 +1,8 @@
-package api;
+package ru.atkachev.TaskManager.api;
 
-import command.AbstractCommand;
-import service.ProjectService;
-import service.TaskService;
+import ru.atkachev.TaskManager.command.AbstractCommand;
+import ru.atkachev.TaskManager.service.ProjectService;
+import ru.atkachev.TaskManager.service.TaskService;
 
 import java.util.Map;
 

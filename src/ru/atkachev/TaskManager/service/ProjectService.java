@@ -1,15 +1,15 @@
-package service;
+package ru.atkachev.TaskManager.service;
 
-import entity.Project;
-import repository.ProjectRepository;
-import repository.TaskRepository;
+import ru.atkachev.TaskManager.entity.Project;
+import ru.atkachev.TaskManager.repository.ProjectRepository;
+import ru.atkachev.TaskManager.repository.TaskRepository;
 
 import java.util.List;
 
 public class ProjectService {
 
-    private ProjectRepository projectRepository;
-    private TaskRepository taskRepository;
+    private final ProjectRepository projectRepository;
+    private final TaskRepository taskRepository;
 
     public ProjectService(ProjectRepository projectRepository, TaskRepository taskRepository) {
         this.projectRepository = projectRepository;

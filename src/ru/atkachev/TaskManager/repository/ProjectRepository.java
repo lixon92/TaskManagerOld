@@ -1,6 +1,6 @@
-package repository;
+package ru.atkachev.TaskManager.repository;
 
-import entity.Project;
+import ru.atkachev.TaskManager.entity.Project;
 
 import java.util.ArrayList;
 import java.util.List;

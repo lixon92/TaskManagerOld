@@ -1,39 +1,41 @@
-package bootstrap;
+package ru.atkachev.TaskManager.bootstrap;
 
-import command.AbstractCommand;
-import command.Helper.HelpCommand;
-import command.Helper.Helper;
-import command.Project.ProjectCreateCommand;
-import command.Project.ProjectDeleteCommand;
-import command.Project.ProjectPrintCommand;
-import command.Project.ProjectUpdateCommand;
-import command.Task.TaskCreateCommand;
-import command.Task.TaskDeleteCommand;
-import command.Task.TaskPrintCommand;
-import command.Task.TaskUpdateCommand;
-import repository.ProjectRepository;
-import repository.TaskRepository;
-import service.ProjectService;
-import service.TaskService;
-import api.IServiceLocate;
+import ru.atkachev.TaskManager.command.AbstractCommand;
+import ru.atkachev.TaskManager.command.helper.HelpCommand;
+import ru.atkachev.TaskManager.command.helper.Helper;
+import ru.atkachev.TaskManager.command.project.ProjectCreateCommand;
+import ru.atkachev.TaskManager.command.project.ProjectDeleteCommand;
+import ru.atkachev.TaskManager.command.project.ProjectPrintCommand;
+import ru.atkachev.TaskManager.command.project.ProjectUpdateCommand;
+import ru.atkachev.TaskManager.command.task.TaskCreateCommand;
+import ru.atkachev.TaskManager.command.task.TaskDeleteCommand;
+import ru.atkachev.TaskManager.command.task.TaskPrintCommand;
+import ru.atkachev.TaskManager.command.task.TaskUpdateCommand;
+import ru.atkachev.TaskManager.repository.ProjectRepository;
+import ru.atkachev.TaskManager.repository.TaskRepository;
+import ru.atkachev.TaskManager.service.ProjectService;
+import ru.atkachev.TaskManager.service.TaskService;
+import ru.atkachev.TaskManager.api.IServiceLocate;
 
 import java.util.*;
 
 public class Bootstrap implements IServiceLocate {
 
-    private TaskRepository taskRepository = new TaskRepository();
-    private ProjectRepository projectRepository = new ProjectRepository();
+    final private TaskRepository taskRepository = new TaskRepository();
+    final private ProjectRepository projectRepository = new ProjectRepository();
 
-    private TaskService taskService = new TaskService(taskRepository);
-    private ProjectService projectService = new ProjectService(projectRepository, taskRepository);
+    final private TaskService taskService = new TaskService(taskRepository);
+    final private ProjectService projectService = new ProjectService(projectRepository, taskRepository);
 
-    private Scanner scanner = new Scanner(System.in);
+    final private Scanner scanner = new Scanner(System.in);
 
     private final Map <String, AbstractCommand> commands = new HashMap<>();
-    private String inputText;
-    private AbstractCommand tempObj;
+
 
     public void init(){
+        String inputText;
+        AbstractCommand tempObj;
+
         registry(new ProjectCreateCommand(this));
         registry(new ProjectPrintCommand(this));
         registry(new ProjectDeleteCommand(this));
@@ -45,7 +47,6 @@ public class Bootstrap implements IServiceLocate {
         registry(new TaskUpdateCommand(this));
 
         registry(new HelpCommand(this));
-
         registry(new Helper(this));
 
         for(;;){

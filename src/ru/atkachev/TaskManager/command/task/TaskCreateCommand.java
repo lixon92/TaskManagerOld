@@ -1,7 +1,7 @@
-package command.Task;
+package ru.atkachev.TaskManager.command.task;
 
-import api.IServiceLocate;
-import command.AbstractCommand;
+import ru.atkachev.TaskManager.api.IServiceLocate;
+import ru.atkachev.TaskManager.command.AbstractCommand;
 
 import java.util.Scanner;
 

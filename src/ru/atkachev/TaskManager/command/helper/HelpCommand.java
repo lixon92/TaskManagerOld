@@ -1,7 +1,7 @@
-package command.Helper;
+package ru.atkachev.TaskManager.command.helper;
 
-import api.IServiceLocate;
-import command.AbstractCommand;
+import ru.atkachev.TaskManager.api.IServiceLocate;
+import ru.atkachev.TaskManager.command.AbstractCommand;
 
 import java.util.ArrayList;
 import java.util.List;
