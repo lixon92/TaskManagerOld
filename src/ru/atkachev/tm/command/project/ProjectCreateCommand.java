@@ -25,4 +25,9 @@ public class ProjectCreateCommand extends AbstractCommand {
     public String description(){
         return "Create project";
     }
+
+    @Override
+    public boolean isSecure() {
+        return false;
+    }
 }

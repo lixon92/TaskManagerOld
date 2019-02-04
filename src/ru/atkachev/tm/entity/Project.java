@@ -10,7 +10,7 @@ public class Project {
 
     private String describe;
     private String name;
-
+    private String userId;
     public void setName(String name){
         this.name = name;
     }
@@ -33,4 +33,12 @@ public class Project {
         return dateCreated;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 }
+

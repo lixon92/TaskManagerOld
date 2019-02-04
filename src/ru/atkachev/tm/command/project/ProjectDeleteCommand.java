@@ -26,4 +26,8 @@ public class ProjectDeleteCommand extends AbstractCommand {
         return "Delete project";
     }
 
+    @Override
+    public boolean isSecure() {
+        return false;
+    }
 }

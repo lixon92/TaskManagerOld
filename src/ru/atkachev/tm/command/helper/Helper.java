@@ -45,4 +45,9 @@ public class Helper extends AbstractCommand {
     public String description() {
         return "Create test cases";
     }
+
+    @Override
+    public boolean isSecure() {
+        return false;
+    }
 }

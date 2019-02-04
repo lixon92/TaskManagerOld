@@ -11,11 +11,15 @@ import ru.atkachev.tm.command.task.TaskCreateCommand;
 import ru.atkachev.tm.command.task.TaskDeleteCommand;
 import ru.atkachev.tm.command.task.TaskPrintCommand;
 import ru.atkachev.tm.command.task.TaskUpdateCommand;
+import ru.atkachev.tm.command.user.UserCreateCommand;
+import ru.atkachev.tm.command.user.UserLogonCommand;
 import ru.atkachev.tm.repository.ProjectRepository;
 import ru.atkachev.tm.repository.TaskRepository;
+import ru.atkachev.tm.repository.UserRepository;
 import ru.atkachev.tm.service.ProjectService;
 import ru.atkachev.tm.service.TaskService;
 import ru.atkachev.tm.api.IServiceLocate;
+import ru.atkachev.tm.service.UserService;
 
 import java.util.*;
 
@@ -23,14 +27,15 @@ public class Bootstrap implements IServiceLocate {
 
     final private TaskRepository taskRepository = new TaskRepository();
     final private ProjectRepository projectRepository = new ProjectRepository();
+    final private UserRepository userRepository = new UserRepository();
 
     final private TaskService taskService = new TaskService(taskRepository);
     final private ProjectService projectService = new ProjectService(projectRepository, taskRepository);
+    final private UserService userService = new UserService(userRepository);
 
     final private Scanner scanner = new Scanner(System.in);
 
     private final Map <String, AbstractCommand> commands = new HashMap<>();
-
 
     public void init(){
         String inputText;
@@ -46,13 +51,16 @@ public class Bootstrap implements IServiceLocate {
         registry(new TaskDeleteCommand(this));
         registry(new TaskUpdateCommand(this));
 
+        registry(new UserCreateCommand(this));
+        registry(new UserLogonCommand(this));
+
         registry(new HelpCommand(this));
         registry(new Helper(this));
 
         for(;;){
             inputText = scanner.nextLine();
             tempObj = commands.get(inputText);
-            if (tempObj != null){
+            if (tempObj != null && tempObj.isSecure() ){
                 System.out.println("[" + tempObj.description() + "]");
                 tempObj.execute();
                 System.out.println("[OK]");
@@ -64,7 +72,7 @@ public class Bootstrap implements IServiceLocate {
     }
 
     // складывает в Мапу команды и объекты команд
-    private void registry(AbstractCommand abstractCommand){
+    private void registry(final AbstractCommand abstractCommand){
         commands.put(abstractCommand.command(), abstractCommand);
     }
 
@@ -79,5 +87,8 @@ public class Bootstrap implements IServiceLocate {
     }
     public String getTerminalService(){
         return scanner.nextLine();
+    }
+    public UserService getUserService() {
+        return userService;
     }
 }

@@ -18,14 +18,20 @@ public class TaskPrintCommand  extends AbstractCommand {
 
     public void execute() {
         List<Task> taskList = serviceLocate.getTaskService().getTaskList();
-        int index = 0;
+        int index = 1;
         for (Task task : taskList){
-            System.out.printf("%s. %s %.8s %.8s%n", index + 1, task.getName(), task.getId(), task.getProjectId());
+            System.out.printf("%s. %s %.8s %.8s%n", index, task.getName(), task.getId(), task.getProjectId());
             index++;
         }
+        //task = new Task();
     }
 
     public String description() {
         return "Print tasks";
+    }
+
+    @Override
+    public boolean isSecure() {
+        return false;
     }
 }

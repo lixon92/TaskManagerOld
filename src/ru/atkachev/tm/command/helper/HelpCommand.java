@@ -34,4 +34,9 @@ public class HelpCommand extends AbstractCommand {
     public String description() {
         return "Help";
     }
+
+    @Override
+    public boolean isSecure() {
+        return false;
+    }
 }

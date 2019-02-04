@@ -14,21 +14,24 @@ public class TaskCreateCommand extends AbstractCommand {
     }
 
     public void execute() {
-        String nameTask, descriptionTask, projectId;
-        int numberTask;
-
         System.out.println("enter number of project");
-        numberTask = Integer.parseInt(serviceLocate.getTerminalService()) - 1;
-        projectId = serviceLocate.getProjectService().getProjectList().get(numberTask).getId();
+        final int numberTask = Integer.parseInt(serviceLocate.getTerminalService()) - 1;
+        final String projectId = serviceLocate.getProjectService().getProjectList().get(numberTask).getId();
 
         System.out.println("enter name of task");
-        nameTask = serviceLocate.getTerminalService();
+        final String nameTask = serviceLocate.getTerminalService();
+
         System.out.println("enter description of task");
-        descriptionTask = serviceLocate.getTerminalService();
+        final String descriptionTask = serviceLocate.getTerminalService();
         serviceLocate.getTaskService().createTask(projectId, nameTask, descriptionTask);
     }
 
     public String description() {
         return "Create task";
+    }
+
+    @Override
+    public boolean isSecure() {
+        return false;
     }
 }

@@ -26,4 +26,9 @@ public class TaskDeleteCommand extends AbstractCommand {
     public String description() {
         return "Delete selected task";
     }
+
+    @Override
+    public boolean isSecure() {
+        return false;
+    }
 }

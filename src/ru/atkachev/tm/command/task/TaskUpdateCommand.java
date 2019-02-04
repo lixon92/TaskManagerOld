@@ -35,4 +35,9 @@ public class TaskUpdateCommand extends AbstractCommand {
     public String description() {
         return "Update task";
     }
+
+    @Override
+    public boolean isSecure() {
+        return false;
+    }
 }

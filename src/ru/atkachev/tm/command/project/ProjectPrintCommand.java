@@ -30,4 +30,9 @@ public class ProjectPrintCommand extends AbstractCommand {
     public String description(){
         return "Print projects";
     }
+
+    @Override
+    public boolean isSecure() {
+        return false;
+    }
 }

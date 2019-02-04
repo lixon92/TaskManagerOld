@@ -35,4 +35,9 @@ public class ProjectUpdateCommand extends AbstractCommand {
     public String description() {
         return "Update project";
     }
+
+    @Override
+    public boolean isSecure() {
+        return false;
+    }
 }
